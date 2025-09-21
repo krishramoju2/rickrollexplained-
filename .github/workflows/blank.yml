@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"> <!-- Sets character encoding for the document -->
+  <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8, ensuring all text, emojis, and symbols display correctly -->
 
-  <title>💥 Rickroll Ultimate Chaos Button 💥</title> <!-- Page title shown on browser tab -->
+  <title>💥 Rickroll Ultimate Chaos Button 💥</title> <!-- The title appears in the browser tab -->
 
   <style>
     /* ================= BODY STYLES ================= */
     body {
-      margin: 0; /* Remove default body margin */
-      height: 100vh; /* Full viewport height */
-      overflow: hidden; /* Prevent scrollbars */
-      font-family: "Comic Sans MS", cursive; /* Fun font for chaos theme */
-      text-align: center; /* Center text horizontally */
-      color: white; /* Default text color */
-      background: black; /* Page background color */
+      margin: 0; /* Removes the default margin around the body to allow full-screen elements */
+      height: 100vh; /* Sets the body height to the viewport height, ensuring full-screen coverage */
+      overflow: hidden; /* Prevents scrollbars from appearing when elements move around */
+      font-family: "Comic Sans MS", cursive; /* Fun, playful font to match chaotic theme */
+      text-align: center; /* Centers text horizontally inside the body */
+      color: white; /* Default text color, visible on black background */
+      background: black; /* Sets a dark background for the video and chaos effects to pop */
     }
 
 
     /* ================= FULLSCREEN YOUTUBE VIDEO ================= */
     #player {
-      position: fixed; /* Fixed so video stays in place */
-      top: 0; /* Top edge */
-      left: 0; /* Left edge */
-      width: 100vw; /* Full viewport width */
-      height: 100vh; /* Full viewport height */
-      z-index: -1; /* Behind everything else */
-      pointer-events: none; /* Allow clicks to pass through */
+      position: fixed; /* Keeps video fixed in the viewport even when scrolling */
+      top: 0; /* Aligns top of video to top of viewport */
+      left: 0; /* Aligns left of video to left of viewport */
+      width: 100vw; /* Video spans entire viewport width */
+      height: 100vh; /* Video spans entire viewport height */
+      z-index: -1; /* Places video behind all other elements */
+      pointer-events: none; /* Allows clicks to pass through video, so buttons are clickable */
     }
 
 
     /* ================= INTRO CAPTION ================= */
     #introCaption {
-      position: fixed; /* Stay in viewport */
-      top: 50%; /* Center vertically */
-      left: 50%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Perfect centering */
-      font-size: 6rem; /* Giant font size */
-      font-weight: bold; /* Bold text */
-      text-shadow: 2px 2px 10px black, 0 0 20px red, 0 0 40px yellow; /* Glow effect */
-      z-index: 1000; /* Above video */
+      position: fixed; /* Fixed in viewport, stays in place */
+      top: 50%; /* Vertically center */
+      left: 50%; /* Horizontally center */
+      transform: translate(-50%, -50%); /* Exactly centers element using its own dimensions */
+      font-size: 6rem; /* Very large text for dramatic effect */
+      font-weight: bold; /* Makes text thick and prominent */
+      text-shadow: 2px 2px 10px black, 0 0 20px red, 0 0 40px yellow; /* Multilayered glow to make text pop */
+      z-index: 1000; /* Ensures caption is above everything else including video */
     }
 
 
     /* ================= CHAOS BUTTON ================= */
     .volumeBtn {
-      position: absolute; /* Absolute position relative to body */
-      top: 50%; /* Start centered vertically */
-      left: 50%; /* Start centered horizontally */
-      transform: translate(-50%, -50%); /* Center with transform */
-      font-size: 2rem; /* Initial button text size */
-      min-width: 80px; /* Minimum width */
-      min-height: 60px; /* Minimum height */
-      padding: 20px 40px; /* Inner spacing */
-      border-radius: 50%; /* Circular button */
-      border: 5px solid lime; /* Lime border */
-      background: magenta; /* Button background color */
-      cursor: pointer; /* Pointer on hover */
-      box-shadow: 0 0 20px cyan, 0 0 40px yellow, 0 0 60px red; /* Neon glow effect */
-      transition: all 0.2s ease; /* Smooth transitions */
-      z-index: 1000; /* Above video */
-      display: none; /* Hidden initially */
+      position: absolute; /* Positioned relative to the body */
+      top: 50%; /* Initial vertical center */
+      left: 50%; /* Initial horizontal center */
+      transform: translate(-50%, -50%); /* Centers button precisely */
+      font-size: 2rem; /* Initial text size */
+      min-width: 80px; /* Prevent button from being too small */
+      min-height: 60px; /* Ensure button is easily clickable */
+      padding: 20px 40px; /* Adds spacing inside button for comfort */
+      border-radius: 50%; /* Makes button circular */
+      border: 5px solid lime; /* Bright green border for visibility */
+      background: magenta; /* Eye-catching button color */
+      cursor: pointer; /* Pointer icon on hover to indicate clickability */
+      box-shadow: 0 0 20px cyan, 0 0 40px yellow, 0 0 60px red; /* Neon glowing effect to make it chaotic */
+      transition: all 0.2s ease; /* Smooth transition for movement, rotation, or scaling */
+      z-index: 1000; /* Keeps button above video and flying text */
+      display: none; /* Hidden initially until intro ends */
     }
 
 
     /* ================= BIG VOLUME DISPLAY ================= */
     #bigVolume {
-      position: fixed; /* Fixed in viewport */
-      top: 10%; /* Near top */
-      left: 50%; /* Center horizontally */
-      transform: translateX(-50%); /* Perfect centering */
-      font-size: 4rem; /* Large font */
-      font-weight: bold; /* Bold text */
-      text-shadow: 2px 2px 10px black, 0 0 20px red, 0 0 40px yellow; /* Glow effect */
-      z-index: 1000; /* Above other elements */
-      display: none; /* Hidden at start */
+      position: fixed; /* Stays in viewport while other elements move */
+      top: 10%; /* Positioned near top */
+      left: 50%; /* Horizontally centered */
+      transform: translateX(-50%); /* Centers the element horizontally exactly */
+      font-size: 4rem; /* Large enough to be noticeable */
+      font-weight: bold; /* Makes it stand out */
+      text-shadow: 2px 2px 10px black, 0 0 20px red, 0 0 40px yellow; /* Eye-catching glow */
+      z-index: 1000; /* Keeps above video */
+      display: none; /* Hidden until intro ends */
     }
 
 
     /* ================= FLYING CHAOS TEXT ================= */
     .flyingText {
-      position: absolute; /* Free movement */
-      font-size: 2rem; /* Text size */
-      animation: fly 5s linear forwards; /* Fly animation */
-      pointer-events: none; /* Not clickable */
-      user-select: none; /* Cannot select text */
+      position: absolute; /* Can move freely anywhere on screen */
+      font-size: 2rem; /* Medium size for visibility without overpowering */
+      animation: fly 5s linear forwards; /* Smooth animation for flying effect over 5 seconds */
+      pointer-events: none; /* User cannot interact with flying text */
+      user-select: none; /* Prevent text from being selected */
     }
 
 
     /* ================= FLY ANIMATION ================= */
     @keyframes fly {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; } /* Start: visible, no rotation */
-      100% { transform: translateY(-150vh) rotate(360deg); opacity: 0; } /* End: fly up & vanish */
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; } /* Start: stationary, fully visible */
+      100% { transform: translateY(-150vh) rotate(360deg); opacity: 0; } /* End: flies up out of view, rotates, fades out */
     }
 
   </style>
@@ -99,49 +99,50 @@
 <body>
 
 <!-- ================= FULLSCREEN VIDEO ================= -->
-<div id="player"></div>
+<div id="player"></div> <!-- YouTube player container -->
 
 
 <!-- ================= INTRO CAPTION ================= -->
-<div id="introCaption">ARE YOU READY TO BE RICKROLLED?</div>
+<div id="introCaption">ARE YOU READY TO BE RICKROLLED?</div> <!-- Large intro text displayed at start -->
 
 
 <!-- ================= CHAOS BUTTON & VOLUME DISPLAY ================= -->
-<button class="volumeBtn">🔊 VOLUME</button>
-<div id="bigVolume">Volume: 0%</div>
+<button class="volumeBtn">🔊 VOLUME</button> <!-- Main interactive button -->
+<div id="bigVolume">Volume: 0%</div> <!-- Shows current volume percentage -->
 
 
 <script>
   // ================= VARIABLES =================
-  let volume = 0; // Initial volume
-  const bigVolume = document.getElementById("bigVolume"); // Reference to volume display
-  const chaosWords = ["LOUDER!", "WHY?!", "RAVE TIME!", "HELP!", "BRUH", "💀"]; // Words for flying text
-  let audioUnmuted = false; // Flag for audio
-
-  // ================= YOUTUBE API SCRIPT =================
-  let tag = document.createElement('script'); // Create script element
-  tag.src = "https://www.youtube.com/iframe_api"; // Set source
-  document.body.appendChild(tag); // Append to DOM
-
-  let player; // Placeholder for YouTube player
+  let volume = 0; // Current volume percentage (0-100)
+  const bigVolume = document.getElementById("bigVolume"); // Reference to volume display div
+  const chaosWords = ["LOUDER!", "WHY?!", "RAVE TIME!", "HELP!", "BRUH", "💀"]; // Array of random words for flying text
+  let audioUnmuted = false; // Tracks whether audio has been unmuted yet
 
 
-  // ================= YOUTUBE PLAYER CALLBACK =================
+  // ================= LOAD YOUTUBE API =================
+  let tag = document.createElement('script'); // Create a <script> element
+  tag.src = "https://www.youtube.com/iframe_api"; // Set source to YouTube IFrame API
+  document.body.appendChild(tag); // Add script to document, loads API asynchronously
+
+  let player; // Placeholder for YouTube player instance
+
+
+  // ================= INITIALIZE YOUTUBE PLAYER =================
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', { // Initialize player
+    player = new YT.Player('player', { // Create a new YouTube player inside #player div
       width: '100%', // Full width
       height: '100%', // Full height
-      videoId: 'dQw4w9WgXcQ', // Rickroll ID
+      videoId: 'dQw4w9WgXcQ', // Rickroll video
       playerVars: {
-        autoplay: 1, // Start automatically
-        controls: 0, // Hide controls
+        autoplay: 1, // Start video automatically
+        controls: 0, // Hide player controls
         modestbranding: 1, // Minimal branding
-        loop: 1, // Loop video
-        playlist: 'dQw4w9WgXcQ', // Required for loop
-        rel: 0 // No related videos
+        loop: 1, // Loop video infinitely
+        playlist: 'dQw4w9WgXcQ', // Required for looping
+        rel: 0 // Disable related videos at end
       },
       events: {
-        onReady: (event) => event.target.mute() // Mute on load
+        onReady: (event) => event.target.mute() // Mute video on initial load
       }
     });
   }
@@ -150,80 +151,78 @@
   // ================= SHOW BUTTON AFTER INTRO =================
   setTimeout(() => {
     document.getElementById("introCaption").style.display = "none"; // Hide intro caption
-    document.querySelector(".volumeBtn").style.display = "block"; // Show chaos button
-    document.getElementById("bigVolume").style.display = "block"; // Show volume display
-  }, 3000); // 3 seconds delay
+    document.querySelector(".volumeBtn").style.display = "block"; // Reveal main button
+    document.getElementById("bigVolume").style.display = "block"; // Reveal volume display
+  }, 3000); // Wait 3 seconds before showing button
 
 
   // ================= CHAOS FUNCTION =================
   function chaos(btn) {
 
-    // Unmute audio if first click
+    // Unmute video on first button click
     if (!audioUnmuted && player) {
       player.unMute();
-      audioUnmuted = true;
+      audioUnmuted = true; // Flag so it only unmutes once
     }
 
-    // Increase volume by 25%
+    // Increase volume in steps of 25%
     volume += 25;
-    if (volume > 100) volume = 0; // Reset after 100%
-    bigVolume.innerText = `Volume: ${volume}%`; // Update display
+    if (volume > 100) volume = 0; // Reset if it goes above 100%
+    bigVolume.innerText = `Volume: ${volume}%`; // Update volume display
 
-    moveButton(btn); // Move clicked button
+    moveButton(btn); // Move the clicked button to a new random location
 
-    // Generate 1-3 extra buttons randomly
-    const extraButtonsCount = Math.floor(Math.random() * 3) + 1;
+    // Generate 1-3 extra buttons for chaos effect
+    const extraButtonsCount = Math.floor(Math.random() * 3) + 1; // Random between 1-3
     for (let i = 0; i < extraButtonsCount; i++) {
       let clone = btn.cloneNode(true); // Duplicate button
-      moveButton(clone); // Move clone
-      clone.innerText = "🔊"; // Minimal text
+      moveButton(clone); // Move clone to random position
+      clone.innerText = "🔊"; // Shorter label for clones
       document.body.appendChild(clone); // Add to DOM
-      clone.addEventListener("click", () => chaos(clone)); // Attach click
+      clone.addEventListener("click", () => chaos(clone)); // Attach click handler recursively
     }
 
-    // Random flying text
-    if (Math.random() > 0.5) {
+    // Randomly generate flying text for extra chaos
+    if (Math.random() > 0.5) { // 50% chance
       let txt = document.createElement("div"); // Create div
-      txt.className = "flyingText"; // Apply class
-      txt.style.left = Math.random() * 85 + "%"; // Random horizontal
-      txt.style.top = "90%"; // Near bottom
-      txt.style.color = `hsl(${Math.random()*360},100%,50%)`; // Random color
-      txt.innerText = chaosWords[Math.floor(Math.random() * chaosWords.length)]; // Random text
+      txt.className = "flyingText"; // Apply animation styles
+      txt.style.left = Math.random() * 85 + "%"; // Random horizontal position
+      txt.style.top = "90%"; // Start near bottom
+      txt.style.color = `hsl(${Math.random()*360},100%,50%)`; // Random bright color
+      txt.innerText = chaosWords[Math.floor(Math.random() * chaosWords.length)]; // Random word
       document.body.appendChild(txt); // Add to DOM
-      setTimeout(() => txt.remove(), 7000); // Remove after animation
+      setTimeout(() => txt.remove(), 7000); // Remove after animation duration
     }
   }
 
 
   // ================= MOVE BUTTON FUNCTION =================
   function moveButton(btn) {
-    const newFontSize = Math.random() * 3 + 1.5; // Random font size
-    btn.style.top = Math.random() * 85 + "%"; // Random vertical
-    btn.style.left = Math.random() * 85 + "%"; // Random horizontal
-    btn.style.fontSize = newFontSize + "rem"; // Apply font size
-    btn.style.background = `hsl(${Math.random()*360},100%,50%)`; // Random background color
-    btn.style.transform = `translate(-50%, -50%) rotate(${Math.random()*360}deg) scale(${Math.random()*1.5})`; // Random rotation & scale
+    const newFontSize = Math.random() * 3 + 1.5; // Random font size between 1.5rem and 4.5rem
+    btn.style.top = Math.random() * 85 + "%"; // Random vertical position within 85% of viewport
+    btn.style.left = Math.random() * 85 + "%"; // Random horizontal position
+    btn.style.fontSize = newFontSize + "rem"; // Apply new font size
+    btn.style.background = `hsl(${Math.random()*360},100%,50%)`; // Random color using HSL for brightness
+    btn.style.transform = `translate(-50%, -50%) rotate(${Math.random()*360}deg) scale(${Math.random()*1.5})`; // Random rotation and scale
   }
 
 
   // ================= CURSOR AVOIDANCE =================
   document.body.addEventListener("mousemove", (e) => {
     document.querySelectorAll(".volumeBtn").forEach(btn => {
-      let rect = btn.getBoundingClientRect(); // Button position
-      let dx = e.clientX - (rect.left + rect.width/2); // X distance
-      let dy = e.clientY - (rect.top + rect.height/2); // Y distance
+      let rect = btn.getBoundingClientRect(); // Get current button position and size
+      let dx = e.clientX - (rect.left + rect.width/2); // Horizontal distance from cursor to button center
+      let dy = e.clientY - (rect.top + rect.height/2); // Vertical distance
       let dist = Math.sqrt(dx*dx + dy*dy); // Euclidean distance
-      if (dist < 120) moveButton(btn); // Move if cursor is close
+      if (dist < 120) moveButton(btn); // Move button if cursor is too close
     });
   });
 
 
   // ================= INITIAL BUTTON CLICK =================
-  document.querySelector(".volumeBtn").addEventListener("click", () => chaos(document.querySelector(".volumeBtn")));
-
+  document.querySelector(".volumeBtn").addEventListener("click", () => chaos(document.querySelector(".volumeBtn"))); // Attach chaos function to main button
 
 </script>
 
 </body>
 </html>
-
